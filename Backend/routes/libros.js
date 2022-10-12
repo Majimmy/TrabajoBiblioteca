@@ -20,4 +20,5 @@ router.post('/', function(req, res, _) {
     }
     res.status(200).json({codGenero: codGenero})
   });
+/*Funcion delete se implementara cuando haya una base de datos con la cual testear borrado de elementos*/
 module.exports = router;
