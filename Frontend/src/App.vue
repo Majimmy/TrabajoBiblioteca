@@ -1,11 +1,11 @@
 <template>
   <h1>Biblioteca mini</h1>
-  <input type="text" v-model="input" placeholder="Busca libros..." />
-  <button @click="update"> Actualizar Lista </button>
- <div class="item libro" v-for="libro in filteredList()" :key="libro">
+  <input type="text" v-model="input" placeholder="Busca libros..." />    /* cuadro de busqueda */
+  <button @click="update"> Actualizar Lista </button>                    /*boton para actualizar la lista llamando una funcion get (por ahora añande 1 solo elemento)*/
+ <div class="item libro" v-for="libro in filteredList()" :key="libro">   /*lista de libros disponobles, y filtra la lista disponible segun lo que hay en el cuadro de busqueda*/
    <p>{{ libro }}</p>
  </div>
- <div class="item error" v-if="input&&!filteredList().length">
+ <div class="item error" v-if="input&&!filteredList().length">           /*cuadro que avisa que el elemento del cuadro de busqueda, no se encuentra*/
     <p>No se encontraron resultados</p>
  </div>  
 </template>
@@ -16,17 +16,17 @@ import { ref } from 'vue';
 import axios from 'axios'
 
 let input = ref("");
-let codLibro = ref(0)
-let libros = ref(["Libro 0","Libro 2","Libro 3"]);
+let codLibro = ref(0)         /* codigo de libro referencial que recive el valor desde el backend*/
+let libros = ref(["Libro 0","Libro 2","Libro 3"]);    /* lista de libros referencial*/
 let update = function(){
   axios
   .get('http://localhost:3000/libros')
   .then(response => {
-    codLibro.value = response.data.libros
+    codLibro.value = response.data.libros  /* recive datos de la funcion get*/
     libros.value[0] = "Libro "+codLibro.value /*ejemplo de actualizacion de la lista*/
   })
 }
-function filteredList() {
+function filteredList() {  /* filtra la lista de libros segun las caracteristicas de la variable "input"*/
   return libros.value.filter((libro) =>
     libro.toLowerCase().includes(input.value.toLowerCase())
   );
@@ -52,7 +52,7 @@ body {
   min-height: 100vh;
   background-color: rgb(41, 41, 43);
 }
-input {
+input {      /* estilo para el cuadro de busqueda*/
   display: block;
   width: 350px;
   margin: 20px auto;
@@ -74,11 +74,11 @@ input {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
     rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
-.libro {
+.libro {       /*estilo para los elementos de la lista*/
   background-color: rgb(83, 146, 202);
   cursor: pointer;
 }
-.error {
+.error {       /*estilo para cuando se muestre el error (no encontrar el elemento deseado)*/
   background-color: tomato;
 }
 </style>
