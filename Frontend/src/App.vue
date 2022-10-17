@@ -1,11 +1,11 @@
 <template>
   <h1>Biblioteca mini</h1>
-  <input type="text" v-model="input" placeholder="Busca libros..." />    /* cuadro de busqueda */
-  <button @click="update"> Actualizar Lista </button>                    /*boton para actualizar la lista llamando una funcion get (por ahora añande 1 solo elemento)*/
- <div class="item libro" v-for="libro in filteredList()" :key="libro">   /*lista de libros disponobles, y filtra la lista disponible segun lo que hay en el cuadro de busqueda*/
+  <input type="text" v-model="input" placeholder="Busca libros..." />    <!-- cuadro de busqueda -->
+  <button @click="update"> Actualizar Lista </button>                    <!-- boton para actualizar la lista llamando una funcion get (por ahora añande 1 solo elemento) -->
+ <div class="item libro" v-for="libro in filteredList()" :key="libro">   <!-- lista de libros disponobles, y filtra la lista disponible segun lo que hay en el cuadro de busqueda -->
    <p>{{ libro }}</p>
  </div>
- <div class="item error" v-if="input&&!filteredList().length">           /*cuadro que avisa que el elemento del cuadro de busqueda, no se encuentra*/
+ <div class="item error" v-if="input&&!filteredList().length">           <!-- cuadro que avisa que el elemento del cuadro de busqueda, no se encuentra -->
     <p>No se encontraron resultados</p>
  </div>  
 </template>
