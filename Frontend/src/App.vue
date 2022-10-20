@@ -1,7 +1,10 @@
 <template>
   <h1>Biblioteca mini</h1>
   <input type="text" v-model="input" placeholder="Busca libros..." />    <!-- cuadro de busqueda -->
-  <button @click="update"> Actualizar Lista </button>                    <!-- boton para actualizar la lista llamando una funcion get (por ahora añande 1 solo elemento) -->
+  <div>
+    <button class="boton1" @click="update"> Actualizar Lista </button> <!-- boton para actualizar la lista llamando una funcion get (por ahora añande 1 solo elemento) -->                
+    <button class="boton2" @click="update"> nosewe </button>
+  </div>
  <div class="item libro" v-for="libro in filteredList()" :key="libro">   <!-- lista de libros disponobles, y filtra la lista disponible segun lo que hay en el cuadro de busqueda -->
    <p>{{ libro }}</p>
  </div>
@@ -16,14 +19,14 @@ import { ref } from 'vue';
 import axios from 'axios'
 
 let input = ref("");
-let codLibro = ref(0)         /* codigo de libro referencial que recive el valor desde el backend*/
-let libros = ref(["Libro 0","Libro 2","Libro 3"]);    /* lista de libros referencial*/
+let titulolibro = ref("Libro 1")         /* codigo de libro referencial que recibe el valor desde el backend*/
+let libros = ref(["Libro 6","Libro 2","Libro 3"]);    /* lista de libros referencial*/
 let update = function(){
   axios
   .get('http://localhost:3000/libros')
   .then(response => {
-    codLibro.value = response.data.libros  /* recive datos de la funcion get*/
-    libros.value[0] = "Libro "+codLibro.value /*ejemplo de actualizacion de la lista*/
+    titulolibro.value = response.data.libros  /* recibe datos de la funcion get*/
+    libros.value[0] = titulolibro.value /*ejemplo de actualizacion de la lista*/
   })
 }
 function filteredList() {  /* filtra la lista de libros segun las caracteristicas de la variable "input"*/
@@ -58,7 +61,7 @@ input {      /* estilo para el cuadro de busqueda*/
   margin: 20px auto;
   padding: 10px 45px;
   background: white url("assets/search.svg") no-repeat 15px center;
-  background-size: 15px 15px;
+  background-size: 20px 20px;
   font-size: 16px;
   border: none;
   border-radius: 5px;
@@ -78,6 +81,22 @@ input {      /* estilo para el cuadro de busqueda*/
   background-color: rgb(83, 146, 202);
   cursor: pointer;
 }
+
+.boton1 {      /*boton update*/
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  display: block;
+  width: 120px;
+  margin: auto;
+  padding: 8px 8px;
+  background: aquamarine no-repeat 100px center;
+  background-size: 15px 15px;
+  font-size: 14px;
+  border: 6px;
+  border-radius: 3px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
 .error {       /*estilo para cuando se muestre el error (no encontrar el elemento deseado)*/
   background-color: tomato;
 }

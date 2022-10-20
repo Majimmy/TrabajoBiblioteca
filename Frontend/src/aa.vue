@@ -1,4 +1,4 @@
-<template>
+<template> 
   <div id="app">
     <p>original message: "{{ message }}"</p>
     <p>reversed message: "{{ reversedMessage }}"</p>
