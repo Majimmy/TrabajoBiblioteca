@@ -1,0 +1,16 @@
+Abrir terminal en la carpeta donde
+se quiera tener el frontend, y escribir:
+vue create frontend
+(esto crea la carpeta frontend)
+
+Durante la instalacion, elegir la opcion:
+Default ([Vue 3] babel, eslint)
+
+Despues, instalar los siguientes elementos:
+
+npm install bootstrap@4.6.0 jquery popper.js
+npm install vue-router@4
+npm install axios
+
+Encender servidor frontend con el comando:
+npm run serve
