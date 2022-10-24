@@ -1,3 +1,6 @@
+crear carpeta llamada "backend"
+abrir una terminal dentro de esta carpeta.
+utilizar los siguentes comandos:
 npm init
 
 despues:
