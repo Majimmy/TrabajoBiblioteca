@@ -60,7 +60,7 @@ export default {
 </script>
 
 <style>
-// proxima semana se concentrará en el aspecto de las paginas
+<--! proxima semana se concentrará en el aspecto de las paginas --->
 .formaEnvio {
     max-width: 300px;
     margin: auto;
