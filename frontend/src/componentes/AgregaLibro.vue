@@ -1,3 +1,4 @@
+<!-- parte donde se agregan nuevos libros -->
 <template>
     <div class="formaEnvio">
         <div v-if="!enviado">
