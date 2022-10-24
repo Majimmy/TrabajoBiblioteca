@@ -25,7 +25,7 @@
 import ServicioLibros from "../servicios/LibrosServD"; //se importan funciones de LibrosServD
 export default {
     name: "Agregar-Libro",
-    data() {  // inicializa un modelo de datos el cual tiene la forma de un objeto libro 
+    data() {  // inicializa objetos para la pagina.
         return {
             libro: {
                 id: null,
