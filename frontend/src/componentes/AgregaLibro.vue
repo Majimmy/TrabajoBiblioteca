@@ -21,10 +21,10 @@
 </template>
 
 <script>
-import ServicioLibros from "../servicios/LibrosServD";
+import ServicioLibros from "../servicios/LibrosServD"; //se crea una funcion a base de lo exportado en LibrosServD
 export default {
     name: "Agregar-Libro",
-    data() {
+    data() {  // inicializa un modelo de datos el cual tiene la forma de un objeto libro 
         return {
             libro: {
                 id: null,
@@ -32,16 +32,16 @@ export default {
                 descripcion: "",
                 disponible: false
             },
-            enviado: false
+            enviado: false // booleano para determinar cuando ese mensaje se muestre.
         };
     },
     methods: {
-        guardaLibro() {
-            var data = {
+        guardaLibro() { // funcion de pagina que realiza pasos para guardar libro
+            var data = {  //crea un grupo de datos que sea compatible con las funciones de LibrosServD.js
                 titulo: this.libro.titulo,
                 descripcion: this.libro.descripcion
             };
-            ServicioLibros.create(data)
+            ServicioLibros.create(data) //utiliza una de las funciones exportadas
             .then(response => {
                 this.libro.id = response.data.id;
                 console.log(response.data);
@@ -51,7 +51,7 @@ export default {
                 console.log(e);
             });
         },
-        nuevoLibro() {
+        nuevoLibro() { //resetea el libro actual (de la pagina) para crear otro
             this.enviado = false;
             this.libro = {};
         }
@@ -60,6 +60,7 @@ export default {
 </script>
 
 <style>
+// proxima semana se concentrará en el aspecto de las paginas
 .formaEnvio {
     max-width: 300px;
     margin: auto;
