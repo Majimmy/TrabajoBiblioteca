@@ -58,9 +58,8 @@ export default {
     }
 };
 </script>
-
-<style>
 <!-- proxima semana se concentrará en el aspecto de las paginas -->
+<style>
 .formaEnvio {
     max-width: 300px;
     margin: auto;
