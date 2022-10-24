@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-// "npm install bootstrap". se importa bootstrap
+// se importa bootstrap. Sirve para poder utilizar elementos para la pagina web (como bulma)
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-// "nmp install vue-router@4". se importa router
+// se importa router. Router sirve para crear rutas predefinidas. Optimiza cantidad de codigo escrito y establece un orden.
 import router from './router'
 
 createApp(App).use(router).mount('#app')
