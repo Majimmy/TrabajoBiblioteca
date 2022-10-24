@@ -2,7 +2,7 @@ module.exports = mongoose => {
   var schema = mongoose.Schema(
     {
       titulo: String,
-      descripcion: String,
+      descripcion: String,   //atributos que se van a trabajar (aparte de la _id)
       disponible: Boolean
     },
     { timestamps: true }
@@ -13,5 +13,5 @@ module.exports = mongoose => {
     return object;
   });
   const Libro = mongoose.model("libro", schema);
-  return Libro;
+  return Libro; //se termina creando un objeto con la forma deseada (la de un libro) y se retorna para su uso en multiples funciones
 };
