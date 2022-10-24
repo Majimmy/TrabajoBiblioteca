@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import ServicioLibros from "../servicios/LibrosServD"; //se crea una funcion a base de lo exportado en LibrosServD
+import ServicioLibros from "../servicios/LibrosServD"; //se importan funciones de LibrosServD
 export default {
     name: "Agregar-Libro",
     data() {  // inicializa un modelo de datos el cual tiene la forma de un objeto libro 
