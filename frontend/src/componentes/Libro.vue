@@ -33,13 +33,13 @@ export default {
     name: "objeto-libro",
     data() {
         return {
-            libroActual: null,
+            libroActual: null, // inicializa libro actual
             mensaje: ""
         };
     },
     methods: {
         getLibro(id) {
-            ServicioLibros.get(id)
+            ServicioLibros.get(id) //utiliza una de las funciones exportadas
             .then(response => {
                 this.libroActual = response.data;
                 console.log(response.data);
@@ -49,13 +49,13 @@ export default {
             });
         },
         cambiaDisp(status) {
-            var data = {
+            var data = { //crea un grupo de datos que sea compatible con las funciones de LibrosServD.js
                 id: this.libroActual.id,
                 titulo: this.libroActual.titulo,
                 descripcion: this.libroActual.descripcion,
                 disponible: status
             };
-            ServicioLibros.update(this.libroActual.id, data)
+            ServicioLibros.update(this.libroActual.id, data) //utiliza una de las funciones exportadas
             .then(response => {
                 console.log(response.data);
                 this.libroActual.disponible = status;
@@ -66,7 +66,7 @@ export default {
             });
         },
         actualizarLibro() {
-            ServicioLibros.update(this.libroActual.id, this.libroActual)
+            ServicioLibros.update(this.libroActual.id, this.libroActual) //utiliza una de las funciones exportadas
             .then(response => {
                 console.log(response.data);
                 this.mensaje = "El libro ha sido actualizado exitosamente";
@@ -76,23 +76,23 @@ export default {
             });
         },
         borrarLibro() {
-            ServicioLibros.delete(this.libroActual.id)
+            ServicioLibros.delete(this.libroActual.id) //utiliza una de las funciones exportadas
             .then(response => {
                 console.log(response.data);
                 this.$router.push({ name: "libros" }); //nota: crear una mejor estancia de borrado
             })               //La actual borra bien, pero congela la pagina en pantalla
-            .catch(e => {    //sugerencia: que surja un cuadro de advertencia y te devuelva a la pagina inicial
+            .catch(e => {    //sugerencia: que surja un cuadro de advertencia y devuelva al usuario a la pagina inicial
                 console.log(e);
             });
         }
     },
-    mounted() {
+    mounted() { //monta/prepara la primera funcion
         this.mensaje = "";
         this.getLibro(this.$route.params.id);
     }
 };
 </script>
-
+<!-- proxima semana se concentrará en el aspecto de las paginas -->
 <style>
 .formaEdicion {
     max-width: 300px;
