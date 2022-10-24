@@ -15,9 +15,9 @@ Planificación semana 10 de Octubre
 
 Planificación semana 17 de Octubre
 - [x] Definir tareas 
-- [ ] Reformar Backend para soportar uso de MongoDB
-- [ ] Crear .txt con instrucciones para montar una DB con docker
-- [ ] Empezar actualización de Frontend para poder conectarse con el nuevo Backend en el futuro
-- [ ] Mejorar interfaz de Frontend (v.2)
-- [ ] Documentar el código.
+- [x] Reformar Backend para soportar uso de MongoDB
+- [x] Crear .txt con instrucciones para montar una DB con docker
+- [x] Empezar actualización de Frontend para poder conectarse con el nuevo Backend en el futuro
+- [x] Mejorar interfaz de Frontend (v.2)
+- [x] Documentar el código.
 
