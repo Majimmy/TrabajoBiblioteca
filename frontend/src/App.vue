@@ -1,3 +1,4 @@
+<!-- Parte de la aplicacion que estará presente en todas las paginas. -->
 <template>
   <div id="app">
     <nav class="navbar navbar-expand navbar-dark bg-dark">
@@ -18,8 +19,8 @@
 </template>
 
 <script>
-// la siguiente semana se concentrará en mejorar el aspecto de pagina
 export default {
   name: "app"
 };
 </script>
+<!-- proxima semana se concentrará en el aspecto de las paginas -->
