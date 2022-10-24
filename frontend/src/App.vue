@@ -18,6 +18,7 @@
 </template>
 
 <script>
+// la siguiente semana se concentrará en mejorar el aspecto de pagina
 export default {
   name: "app"
 };
