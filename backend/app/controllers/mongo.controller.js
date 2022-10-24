@@ -1,9 +1,9 @@
-const db = require("../models");
+const db = require("../models"); //utiliza los modelos creados en esa carpeta, en este caso el modelo libros
 const Libro = db.libros;
 
 // Crea y guarda Libro
 exports.crea = (req, res) => {
-            // para validar
+            // para validar elemento no vacio
   if (!req.body.titulo) {
     res.status(400).send({ message: "error: No se admite elemento vacio" });
     return;
@@ -32,7 +32,6 @@ exports.buscaT = (req, res) => {
   const titulo = req.query.titulo;
             //condicion de titulo
   var condition = titulo ? { titulo: { $regex: new RegExp(titulo), $options: "i" } } : {};
-
   Libro.find(condition)
     .then(data => {
       res.send(data);
@@ -47,7 +46,6 @@ exports.buscaT = (req, res) => {
 // busca Libro con un id
 exports.buscaId = (req, res) => {
   const id = req.params.id;
-
   Libro.findById(id)
     .then(data => {
       if (!data)
@@ -62,13 +60,13 @@ exports.buscaId = (req, res) => {
 };
 // actualiza Libro por id
 exports.actualizaId = (req, res) => {
+            //validar elemento no vacio
   if (!req.body) {
     return res.status(400).send({
       message: "Los datos para actualizar no pueden ser vacios."
     });
   }
   const id = req.params.id;
-
   Libro.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
     .then(data => {
       if (!data) {
@@ -86,7 +84,6 @@ exports.actualizaId = (req, res) => {
 // borra Libro por id
 exports.borraId = (req, res) => {
   const id = req.params.id;
-
   Libro.findByIdAndRemove(id)
     .then(data => {
       if (!data) {
@@ -120,7 +117,6 @@ exports.deleteAll = (req, res) => {
       });
     });
 };
-
 // busca todos los Libros publicados
 exports.buscaDisponibles = (req, res) => {
   Libro.find({ disponible: true })
