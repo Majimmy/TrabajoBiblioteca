@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import ServicioLibros from "../servicios/LibrosServD.js";
+import ServicioLibros from "../servicios/LibrosServD.js"; //se importan funciones de LibrosServD
 export default {
     name: "objeto-libro",
     data() {
