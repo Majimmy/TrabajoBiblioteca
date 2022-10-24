@@ -1,5 +1,5 @@
 import { createWebHistory, createRouter } from "vue-router";
-// para hacer referencia a las componentes de la pagina web (frontend) y moverse entre paginas.
+// para hacer referencia a las componentes de la pagina web (frontend) y moverse entre paginas (sus partes).
 const routes =  [
   {
     path: "/",
