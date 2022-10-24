@@ -27,4 +27,4 @@ Planificación semana 24 de Octubre
 - [ ] Como se reformó el fontend, aplicar mejoras para la apariencia de la aplicación (styles)
 - [ ] Agregar 10 libros a la base de datos
 - [ ] Terminar de documentar
-- [ ] Iniciar a confeccionar la presentación de producto
+- [ ] Iniciar a confeccionar la presentación del resultado del proyecto
