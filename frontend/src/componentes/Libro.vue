@@ -1,3 +1,4 @@
+<!-- parte de pagina inicial. lista de libros y buscador -->
 <template>
     <div v-if="libroActual" class="formaEdicion">
         <h4>Libro</h4>
