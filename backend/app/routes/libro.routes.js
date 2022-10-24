@@ -13,7 +13,7 @@ module.exports = app => {
     router.delete("/:id", libros.borraId);
     //borra todos los libros ((precaucion al usar))
     router.delete("/", libros.deleteAll);
-    //muestra todos los libros con caracteristica "disponible"
-    router.get("/disponible", libros.buscaDisponibles);
-    app.use('/api/libros', router);
+    //muestra todos los libros con caracteristica "disponible"=true (***nota***)
+    router.get("/disponible", libros.buscaDisponibles); // (**funcion no utilizada por el momento**)
+    app.use('/api/libros', router);                     // la cantidad de elementos repetidos no serán muchos como para darle uso por ahora
   };
