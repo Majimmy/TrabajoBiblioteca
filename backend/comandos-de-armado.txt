@@ -1,0 +1,13 @@
+npm init
+
+despues:
+npm install express
+npm install mongoose
+npm install body-parser
+npm install cors
+
+como alternativa se puede usar:
+npm install mongoose body-parser express cors --save
+
+inicia ser servidor con:
+node server.js
