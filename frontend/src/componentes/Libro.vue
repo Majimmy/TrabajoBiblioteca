@@ -32,7 +32,7 @@
 import ServicioLibros from "../servicios/LibrosServD.js"; //se importan funciones de LibrosServD
 export default {
     name: "objeto-libro",
-    data() {
+    data() {  //inicializa objetos para la pagina
         return {
             libroActual: null, // inicializa libro actual
             mensaje: ""
