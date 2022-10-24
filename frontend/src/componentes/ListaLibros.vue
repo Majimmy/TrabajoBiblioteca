@@ -1,3 +1,4 @@
+<!-- parte de pagina inicial. lista de libros y buscador -->
 <template>
   <div class="lista fila">
     <div class="columnaA">
@@ -42,20 +43,20 @@
 </template>
 
 <script>
-import ServicioLibros from "../servicios/LibrosServD";
+import ServicioLibros from "../servicios/LibrosServD"; //se importan funciones de LibrosServD
 export default {
   name: "lista-libros",
-  data() {
+  data() { //inicializa objetos para la pagina
     return {
-      libros: [],
-      libroActual: null,
-      currentIndex: -1,
+      libros: [], // para hacer un arreglo de libros
+      libroActual: null, // refiere al libro actual
+      currentIndex: -1, // valor para determinar su visualizacion
       titulo: ""
     };
   },
   methods: {
     buscaLibros() {
-      ServicioLibros.getAll()
+      ServicioLibros.getAll() //utiliza una de las funciones exportadas
         .then(response => {
           this.libros = response.data;
           console.log(response.data);
@@ -64,17 +65,17 @@ export default {
           console.log(e);
         });
     },
-    refrescarLista() {
+    refrescarLista() { // esconde la descripcion y muestra solo lo que esta en busqueda
       this.buscaLibros();
       this.libroActual = null;
       this.currentIndex = -1;
     },
-    activaLibro(libro, index) {
+    activaLibro(libro, index) { // muestra la descripcion y opcion de editar de un libro al haber hecho click en el
       this.libroActual = libro;
       this.currentIndex = libro ? index : -1;
     },
-    borraTodosLibros() {
-      ServicioLibros.deleteAll()
+    borraTodosLibros() {  // borra todos los libros de la base de datos (tenga cuidado, no es reversible)
+      ServicioLibros.deleteAll() //utiliza una de las funciones exportadas
         .then(response => {
           console.log(response.data);
           this.refrescarLista();
@@ -83,8 +84,8 @@ export default {
           console.log(e);
         });
     },
-    buscaTitulo() {
-      ServicioLibros.findByTitle(this.titulo)
+    buscaTitulo() { //entrega los libros que concuerden con el titulo ingresado
+      ServicioLibros.findByTitle(this.titulo) //utiliza una de las funciones exportadas
         .then(response => {
           this.libros = response.data;
           this.activaLibro(null);
@@ -95,12 +96,12 @@ export default {
         });
     }
   },
-  mounted() {
+  mounted() { // utilizacion inicial del metodo para tener la lista inicial
     this.buscaLibros();
   }
 };
 </script>
-
+<!-- proxima semana se concentrará en el aspecto de las paginas -->
 <style>
 .lista {
   text-align: left;
