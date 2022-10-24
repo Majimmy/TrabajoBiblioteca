@@ -1,7 +1,6 @@
 module.exports = app => {
-    const libros = require("../controllers/mongo.controller.js");
+    const libros = require("../controllers/mongo.controller.js"); //hace utilizar el modelo de controlador creado
     var router = require("express").Router();
-  
     //crea nuevo libro
     router.post("/", libros.crea);
     //muestra todos los libros 
@@ -16,6 +15,5 @@ module.exports = app => {
     router.delete("/", libros.deleteAll);
     //muestra todos los libros con caracteristica "disponible"
     router.get("/disponible", libros.buscaDisponibles);
-  
     app.use('/api/libros', router);
   };
