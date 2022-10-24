@@ -21,3 +21,10 @@ Planificación semana 17 de Octubre
 - [x] Mejorar interfaz de Frontend (v.2)
 - [x] Documentar el código.
 
+Planificación semana 24 de Octubre
+- [x] Definir tareas 
+- [ ] Hacer últimos ajustes a funciones del frontend (función delete)
+- [ ] Como se reformó el fontend, aplicar mejoras para la apariencia de la aplicación (styles)
+- [ ] Agregar 10 libros a la base de datos
+- [ ] Terminar de documentar
+- [ ] Iniciar a confeccionar la presentación de producto
