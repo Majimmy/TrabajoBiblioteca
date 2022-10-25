@@ -1,26 +1,26 @@
 <!-- parte de pagina inicial. lista de libros y buscador -->
 <template>
-  <div class="lista fila">
-    <div class="columnaA">
-      <div class="inputGrupo mb-3">
-        <input type="text" class="formaControl" placeholder="Buscar por titulo"
-          v-model="titulo"/>
-        <div class="inputGrupoAp">
-          <button class="btn btnSecundario" type="button" @click="buscaTitulo">Buscar</button>
+  <div id="total">
+    <div class="seccion1">
+      <div class="parteA">
+        <div class="inputGrupo mb-3">
+          <input type="text" class="formaControl" placeholder="Buscar por titulo"
+            v-model="titulo"/>
+          <div class="inputGrupoAp">
+            <button class="btn btnSecundario" type="button" @click="buscaTitulo">Buscar</button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="columnaB">
-      <h4>Lista de libros</h4>
-      <ul class="grupoLista">
-        <li class="grupoListaI" :class="{ active: index == currentIndex }"
+      <div class="parteB">
+        <h4>Lista de libros</h4>
+        <div class="grupo libro" :class="{ active: index == currentIndex }"
           v-for="(libro, index) in libros" :key="index" @click="activaLibro(libro, index)">
-          {{ libro.titulo }}
-        </li>
-      </ul>
-      <button class="m-3 btn btnS btnD" @click="borraTodosLibros">Borrar Todos</button>
+          <p>{{ libro.titulo }}</p>
+        </div>
+        <button class="m-3 btn btnS btnD" @click="borraTodosLibros">Borrar Todos</button>
+      </div>
     </div>
-    <div class="columnaB">
+    <div class="seccion2">
       <div v-if="libroActual">
         <h4>Libro</h4>
         <div>
@@ -103,9 +103,31 @@ export default {
 </script>
 <!-- proxima semana se concentrará en el aspecto de las paginas -->
 <style>
-.lista {
+#total {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+#total > div {
+  width: 50%;
+}
+.grupo {
+  width: 380px;
+  margin: 3px;
+  padding: 5px 20px;
+  color: rgb(242, 232, 238);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+.libro {
+  background-color: rgb(83, 146, 202);
+  cursor: pointer;
+  height: 36px;
   text-align: left;
-  max-width: 750px;
-  margin: auto;
+  width: 350px;
+}
+.seccion2 {
+  margin-top: 100px;
 }
 </style>
