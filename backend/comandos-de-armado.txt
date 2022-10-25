@@ -5,14 +5,8 @@ npm init
 (presionar enter a todas las opciones del armado)
 
 despues:
-npm install express
-npm install mongoose
-npm install body-parser
-npm install cors
-
-como alternativa se puede usar:
 npm install mongoose body-parser express cors --save 
- (este es mas facil de usar)
+(este es mas facil de usar)
 
 iniciar servidor con el comando:
 node server.js
