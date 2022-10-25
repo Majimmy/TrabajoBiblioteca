@@ -2,6 +2,7 @@ crear carpeta llamada "backend"
 abrir una terminal dentro de esta carpeta.
 utilizar los siguentes comandos:
 npm init
+(presionar enter a todas las opciones del armado)
 
 despues:
 npm install express
@@ -13,5 +14,5 @@ como alternativa se puede usar:
 npm install mongoose body-parser express cors --save 
  (este es mas facil de usar)
 
-iniciar servidor con:
+iniciar servidor con el comando:
 node server.js
