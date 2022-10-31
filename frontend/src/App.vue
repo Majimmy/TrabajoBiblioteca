@@ -1,6 +1,5 @@
-<!-- Parte de la aplicacion que estará presente en todas las paginas. -->
 <template>
-  <div id="app">
+  <div class="body" id="app">
     <nav class="navbar navbar-expand navbar-dark bg-dark">
       <router-link to="/" class="navbar-brand">Biblioteca</router-link>
       <div class="navbar-nav mr-auto">
@@ -23,4 +22,11 @@ export default {
   name: "app"
 };
 </script>
-<!-- proxima semana se concentrará en el aspecto de las paginas -->
+
+<style>
+.body {
+  padding: 20px;
+  min-height: 100vh;
+  background-color: rgb(41, 41, 43);
+}
+</style>
