@@ -9,17 +9,21 @@
             </div>
             <div class="formaGrupo">
                 <label for="descripcion">Descripcion</label>
-                <input type="text" class="formaControl" id="descripcion" v-model="libroActual.descripcion"/>
+                <textarea rows = "5" cols = "60" id="descripcion" 
+                v-model="libroActual.descripcion">
+                </textarea>
             </div>
             <div class="formaGrupo">
                 <label><strong>Estado:</strong></label>
                 {{ libroActual.disponible ? "Disponible" : "No disponible" }}
             </div>
         </form>
-        <button class="icono iconoP mr2" v-if="libroActual.disponible" @click="cambiaDisp(false)">Marcar Ocupado</button>
-        <button v-else class="icono iconoP mr2" @click="cambiaDisp(true)">Marcar Disponible</button>
-        <button class="icono iconoW mr2" @click="borrarLibro">Borrar</button>
-        <button type="submit" class="icono iconoS" @click="actualizarLibro">Actualizar</button>
+        <button class="icono actu1" v-if="libroActual.disponible" @click="cambiaDisp(false)">Marcar Ocupado</button>
+        <button v-else class="icono actu2" @click="cambiaDisp(true)">Marcar Disponible</button>
+        <router-link :to="'/'">
+            <button class="icono bor" @click="borrarLibro">Borrar</button>
+        </router-link>
+        <button type="submit" class="icono btn-success" @click="actualizarLibro">Actualizar</button>
         <p>{{ mensaje }}</p>
     </div>
     <div v-else>
@@ -80,11 +84,12 @@ export default {
             ServicioLibros.delete(this.libroActual.id) //utiliza una de las funciones exportadas
             .then(response => {
                 console.log(response.data);
-                this.$router.push({ name: "libros" }); //nota: crear una mejor estancia de borrado
-            })               //La actual borra bien, pero congela la pagina en pantalla
+                this.$router.push({ name: "libros" }); //nota: mejor estancia de borrado creada satisfactoriamente!
+            })               
             .catch(e => {    //sugerencia: que surja un cuadro de advertencia y devuelva al usuario a la pagina inicial
                 console.log(e);
             });
+            alert("Libro borrado!");
         }
     },
     mounted() { //monta/prepara la primera funcion
@@ -93,10 +98,24 @@ export default {
     }
 };
 </script>
-<!-- proxima semana se concentrará en el aspecto de las paginas -->
+
 <style>
 .formaEdicion {
     max-width: 300px;
     margin: auto;
+    color: rgb(242, 232, 238);
+}
+.icono{
+    color: rgb(242, 232, 238);
+    border-radius: 5px;
+}
+.bor{
+    background-color: tomato;
+}
+.actu1{
+    background-color: rgb(255, 177, 52);
+}
+.actu2{
+    background-color: rgb(96, 158, 213);
 }
 </style>
