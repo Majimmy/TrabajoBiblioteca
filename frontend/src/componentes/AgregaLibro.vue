@@ -3,14 +3,16 @@
     <div class="formaEnvio">
         <div v-if="!enviado">
             <div class="formaGrupo">
+                <h4>Agregar nuevo libro</h4><br />
                 <label for="titulo">Titulo</label>
                 <input type="text" class="formaControl" id="titulo"
                 required v-model="libro.titulo" name="titulo"/>
             </div>
             <div class="formaGrupo">
                 <label for="descripcion">Descripcion</label>
-                <input class="formaControl" id="descripcion"
-                required v-model="libro.descripcion" name="descripcion"/>
+                <textarea rows = "5" cols = "60" id="descripcion" 
+                required v-model="libro.descripcion" name="descripcion">
+                </textarea>
             </div>
             <button @click="guardaLibro" class="btn btn-success">Enviar</button>
         </div>
@@ -63,6 +65,13 @@ export default {
 <style>
 .formaEnvio {
     max-width: 300px;
-    margin: auto;
+    margin: left;
+    color: rgb(242, 232, 238);
+}
+.formaControl{
+    width: 400px;
+}
+.btn{
+    margin: 4px 0px;
 }
 </style>
