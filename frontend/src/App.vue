@@ -1,3 +1,4 @@
+<!-- Parte de la aplicacion que estará presente en todas las paginas. -->
 <template>
   <div class="body" id="app">
     <nav class="navbar navbar-expand navbar-dark bg-dark">
