@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="parteB">
-        <h4>Lista de libros</h4>
+        <h4>Lista de libros</h4><br/>
         <div class="grupo libro" :class="{ active: index == currentIndex }"
           v-for="(libro, index) in libros" :key="index" @click="activaLibro(libro, index)">
           <p>{{ libro.titulo }}</p>
@@ -21,22 +21,25 @@
       </div>
     </div>
     <div class="seccion2">
-      <div v-if="libroActual">
+      <div class= "cuadro" v-if="libroActual">
         <h4>Libro</h4>
         <div>
-          <label><strong>Titulo:</strong></label> {{ libroActual.titulo }}
+          <label><strong>Titulo:</strong></label><br /> {{ libroActual.titulo }}
         </div>
         <div>
-          <label><strong>Descripcion:</strong></label> {{ libroActual.descripcion }}
+          <br />
+          <label><strong>Descripcion:</strong></label><br /> {{ libroActual.descripcion }}
         </div>
         <div>
+          <br />
           <label><strong>Disponibilidad:</strong></label> {{ libroActual.disponible ? "Disponible" : "No disponible" }}
         </div>
-        <router-link :to="'/libros/' + libroActual.id" class="icono iconoW">Editar</router-link>
+        <router-link :to="'/libros/' + libroActual.id" class="icon iconoW">Editar</router-link>
       </div>
       <div v-else>
         <br />
-        <p>Porfavor, haga click en un Libro...</p>
+        <p><strong>Porfavor, haga click en un Libro...</strong></p>
+        <img src="../assets/list.png" alt="lista" width="500" height="500">
       </div>
     </div>
   </div>
@@ -101,7 +104,7 @@ export default {
   }
 };
 </script>
-<!-- proxima semana se concentrará en el aspecto de las paginas -->
+
 <style>
 #total {
   display: flex;
@@ -109,25 +112,44 @@ export default {
   flex-wrap: wrap;
 }
 #total > div {
-  width: 50%;
+  width: 45%;
+}
+.btnSecundario{
+  width: 70px;
+  margin: 6px 0px;
+  padding: 4px;
+}
+.btn {
+  color: rgb(242, 232, 238);
+  background-color: rgb(85, 85, 85);
+}
+.parteB {
+  color: rgb(242, 232, 238);
 }
 .grupo {
   width: 380px;
-  margin: 3px;
-  padding: 5px 20px;
-  color: rgb(242, 232, 238);
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px,
     rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 .libro {
+  padding: 0px 5px;
   background-color: rgb(83, 146, 202);
   cursor: pointer;
-  height: 36px;
+  min-height: 10px;
   text-align: left;
   width: 350px;
+  
 }
 .seccion2 {
   margin-top: 100px;
+  color: rgb(242, 232, 238);
+}
+.cuadro {
+  border: 5px solid rgb(60, 60, 69);
+  border-radius: 5px;
+  min-height: 150px;
+  padding: 20px;
+  background-color: rgb(72, 72, 84);
 }
 </style>
