@@ -61,7 +61,7 @@ export default {
     }
 };
 </script>
-<!-- proxima semana se concentrará en el aspecto de las paginas -->
+
 <style>
 .formaEnvio {
     max-width: 300px;
