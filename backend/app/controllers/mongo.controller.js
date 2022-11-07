@@ -1,6 +1,6 @@
 const db = require("../models"); //utiliza los modelos creados en esa carpeta, en este caso el modelo libros
 const Libro = db.libros;
-
+const User = db.user;
 // Crea y guarda Libro
 exports.crea = (req, res) => {
             // para validar elemento no vacio
@@ -127,6 +127,74 @@ exports.buscaDisponibles = (req, res) => {
       res.status(500).send({
         message:
           err.message || "Ha ocurrido un error mientras se buscaban los datos."
+      });
+    });
+};
+// los de user empiezan aca
+// crear usuario
+exports.creaU = (req, res) => {
+  // para validar
+  if (!req.body.nombre) {
+    res.status(400).send({ message: "error: No se admite elemento vacio" });
+    return;
+  }
+  if (!req.body.rut) {
+    res.status(400).send({ message: "error: No se admite elemento vacio" });
+    return;
+  }
+  // Crea usuario
+  const user = new User({
+    nombre: req.body.nombre,
+    rut: req.body.rut
+  })
+  // guarda usuario
+  user
+    .save(user)
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+      message:
+      err.message || "un error ha sucedido al guardar."
+    });
+  });
+};
+
+// muestra todos los usuarios por nombre entregado
+exports.buscaU = (req, res) => {
+  const nombre = req.query.nombre;
+            //condicion de nombre
+  var condition = nombre ? { nombre: { $regex: new RegExp(nombre), $options: "i" } } : {};
+  User.find(condition)
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "un error ha sucedido al buscar por titulo."
+      });
+    });
+};
+// borrar usuario
+exports.borraIdU = (req, res) => {
+  const id = req.params.id;
+  User.findByIdAndRemove(id)
+    .then(data => {
+      if (!data) {
+        res.status(404).send({
+          message: "No se pudo borrar el usuario con la id = "+id+". Probablemente no exista."
+        });
+      } else {
+        res.send({
+          message: "usuario removido de la base de datos correctamente."
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error al tratar de borrar usuario con id = " + id
       });
     });
 };
