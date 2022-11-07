@@ -31,6 +31,7 @@ db.mongoose
 });
 // utiliza las rutas creadas
 require("./app/routes/libro.routes")(app);
+require("./app/routes/user.routes")(app);
 // puerto en donde se aloja para escuchar los requests 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
