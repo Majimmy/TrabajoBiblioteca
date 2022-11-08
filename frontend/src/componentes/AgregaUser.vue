@@ -187,4 +187,11 @@ export default {
   padding: 20px;
   background-color: rgb(72, 72, 84);
 }
+.icono{
+    color: rgb(242, 232, 238);
+    border-radius: 5px;
+}
+.bor{
+    background-color: tomato;
+}
 </style>
