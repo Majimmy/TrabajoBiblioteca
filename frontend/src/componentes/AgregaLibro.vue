@@ -52,6 +52,7 @@ export default {
             })
             .catch(e => {
                 console.log(e);
+                alert("Nombre vacio invalido!");
             });
         },
         nuevoLibro() { //resetea el libro actual (de la pagina) para crear otro
