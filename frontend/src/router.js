@@ -16,6 +16,11 @@ const routes =  [
     path: "/add",
     name: "agregar-libro",
     component: () => import("./componentes/AgregaLibro") // regiere a la pagina que presenta herramientas para agregar libro
+  },
+  {
+    path: "/add2",
+    name: "ver-agregar-usuario",
+    component: () => import("./componentes/AgregaUser")
   }
 ];
 const router = createRouter({
