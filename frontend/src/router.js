@@ -15,11 +15,11 @@ const routes =  [
   {
     path: "/add",
     name: "agregar-libro",
-    component: () => import("./componentes/AgregaLibro") // regiere a la pagina que presenta herramientas para agregar libro
+    component: () => import("./componentes/AgregaLibro") // refiere a la pagina que presenta herramientas para agregar libro
   },
   {
     path: "/add2",
-    name: "ver-agregar-usuario",
+    name: "ver-agregar-usuario",  // refiere a la pagina donde se utilizarán las herramientas para manipular el dato usuario
     component: () => import("./componentes/AgregaUser")
   }
 ];
