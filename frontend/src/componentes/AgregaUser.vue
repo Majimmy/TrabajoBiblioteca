@@ -23,7 +23,8 @@
                 </div>
             </div>
             <div class="parte2">
-                <h4>Usuarios</h4><br/>
+                <br />
+                <h4>Usuarios actuales:</h4><br/>
                 <div class="grupo2 user" :class="{ active: index == currentIndex }"
                 v-for="(user, index) in users" :key="index" @click="activaUser(user, index)">
                     <p>{{ user.nombre }}</p>
@@ -32,7 +33,6 @@
         </div>
         <div class="seccionB">
             <div class= "cuadro2" v-if="userActual">
-                <br />
                 <h4>Usuario</h4>
                 <div>
                     <label><strong>Nombre:</strong></label><br /> {{ userActual.nombre }}
