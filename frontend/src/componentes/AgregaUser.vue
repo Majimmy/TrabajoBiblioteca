@@ -15,6 +15,11 @@
                         <input type="text" class="formaControl2" id="rut"
                         required v-model="userRef.rut" name="rut"/>
                     </div>
+                    <div class="formaGrupo2">
+                        <label for="correo">Correo</label>
+                        <input type="email" class="formaControl2" id="correo"
+                        required v-model="userRef.correo" name="correo"/>
+                    </div>
                     <button @click="guardaUser" class="btn2 btn-success">Enviar</button>
                 </div>
                 <div v-else>
@@ -41,6 +46,10 @@
                     <br />
                     <label><strong>Rut:</strong></label><br /> {{ userActual.rut }}
                 </div>
+                <div>
+                    <br />
+                    <label><strong>Correo:</strong></label> {{ userActual.correo }}
+                </div>
                     <button class="icono bor" @click="borrarUser">Borrar</button>
                 </div>
             <div v-else>
@@ -62,6 +71,8 @@ export default {
                 id: null,
                 nombre: "",
                 rut: null,
+                correo: null,
+                devolver: 0
             },
             users: [], // para hacer un arreglo de libros
             userActual: null, // refiere al user actual
@@ -88,7 +99,9 @@ export default {
         guardaUser() { // funcion de pagina que realiza pasos para guardar libro
             var data = {  //crea un grupo de datos que sea compatible con las funciones de LibrosServD.js
                 nombre: this.userRef.nombre,
-                rut: this.userRef.rut
+                rut: this.userRef.rut,
+                correo: this.userRef.correo,
+                devolver: this.userRef.devolver
             };
             ServicioUsers.create(data) //utiliza una de las funciones exportadas
             .then(response => {
@@ -111,16 +124,21 @@ export default {
             this.currentIndex = user ? index : -1;
         },
         borrarUser() {
-            ServicioUsers.delete(this.userActual.id) //utiliza una de las funciones exportadas
-            .then(response => {
-                console.log(response.data);
-                this.$router.push({ name: "users" }); //nota: mejor estancia de borrado creada satisfactoriamente!
-            })               
-            .catch(e => {
-                console.log(e);
-            });
-            alert("Usuario borrado!");
-            this.refrescarLista();
+            if(this.userActual.devolver==0){
+                ServicioUsers.delete(this.userActual.id) //utiliza una de las funciones exportadas
+                .then(response => {
+                    console.log(response.data);
+                    this.$router.push({ name: "users" }); //nota: mejor estancia de borrado creada satisfactoriamente!
+                })               
+                .catch(e => {
+                    console.log(e);
+                });
+                alert("Usuario borrado!");
+                this.refrescarLista();
+            }
+            else{
+                alert("Usuario debe devolver "+this.userActual.devolver+" libros aun!");
+            }
         }
     },
     mounted() { // utilizacion inicial del metodo para tener la lista inicial
@@ -128,7 +146,6 @@ export default {
     }
 };
 </script>
-<!-- proxima semana se concentrará en el aspecto de las paginas -->
 <style>
 .formaEnvio2 {
     max-width: 300px;
@@ -174,7 +191,6 @@ export default {
   min-height: 10px;
   text-align: left;
   width: 350px;
-  
 }
 .seccionB {
   margin-top: 100px;
