@@ -117,7 +117,13 @@ export default {
         },
         nuevoUser() { //resetea el user actual (de la pagina) para crear otro
             this.enviado = false;
-            this.userRef = {};
+            this.userRef = {
+                id: null,
+                nombre: "",
+                rut: null,
+                correo: null,
+                devolver: 0
+            };
         },
         activaUser(user, index) { // muestra la descripcion y opcion de editar de un libro al haber hecho click en el
             this.userActual = user;
