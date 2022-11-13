@@ -146,7 +146,9 @@ exports.creaU = (req, res) => {
   // Crea usuario
   const user = new User({
     nombre: req.body.nombre,
-    rut: req.body.rut
+    rut: req.body.rut,
+    correo: req.body.correo,
+    devolver:req.body.devolver
   })
   // guarda usuario
   user
@@ -210,5 +212,26 @@ exports.buscaIdU = (req, res) => {
       res
         .status(500)
         .send({ message: "Error buscando user con la id=" + id });
+    });
+};
+exports.actualizaIdU = (req, res) => {
+  if (!req.body) {
+    return res.status(400).send({
+      message: "Los datos para actualizar no pueden ser vacios."
+    });
+  }
+  const id = req.params.id;
+  User.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+    .then(data => {
+      if (!data) {
+        res.status(404).send({
+          message: "No se puede actualizar el user con id = "+id+". Quizas el user no exista."
+        });
+      } else res.send({ message: "User acualizado correctamaente." });
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error al actualizar user con la id = " + id
+      });
     });
 };
