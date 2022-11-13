@@ -1,12 +1,12 @@
 module.exports = app => {
-    const user = require("../controllers/mongo.controller.js");
+    const users = require("../controllers/mongo.controller.js");
     var router = require("express").Router();
     //crea nuevo user
-    router.post("/", user.creaU);
+    router.post("/", users.creaU);
     //muestra todos los user 
-    router.get("/", user.buscaU);
+    router.get("/", users.buscaU);
     //borra user por id
-    router.delete("/:id", user.borraIdU);
+    router.delete("/:id", users.borraIdU);
     //muestra user por id
     router.get("/:id", users.buscaIdU);
     //actualiza user por id
