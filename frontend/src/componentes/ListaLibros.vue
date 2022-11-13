@@ -17,7 +17,7 @@
           v-for="(libro, index) in libros" :key="index" @click="activaLibro(libro, index)">
           <p>{{ libro.titulo }}</p>
         </div>
-        <button class="m-3 btn btnS btnD" @click="borraTodosLibros">Borrar Todos</button>
+        <button v-if="adm" class="m-3 btn btnS btnD" @click="borraTodosLibros">Borrar Todos</button>
       </div>
     </div>
     <div class="seccion2">
@@ -34,6 +34,13 @@
           <br />
           <label><strong>Disponibilidad:</strong></label> {{ libroActual.disponible ? "Disponible" : "No disponible" }}
         </div>
+        <div v-if="!libroActual.disponible">
+          
+          <label><strong>Usuario:</strong></label>
+          <div class="usdesc">
+            Nombre: {{ desc1 }}<br />Rut: {{ desc2 }}<br />Correo: {{ desc3 }}
+          </div>
+        </div>
         <router-link :to="'/libros/' + libroActual.id" class="icon iconoW">Editar</router-link>
       </div>
       <div v-else>
@@ -47,6 +54,7 @@
 
 <script>
 import ServicioLibros from "../servicios/LibrosServD"; //se importan funciones de LibrosServD
+import ServicioUsers from "../servicios/UsersServD";
 export default {
   name: "lista-libros",
   data() { //inicializa objetos para la pagina
@@ -54,7 +62,12 @@ export default {
       libros: [], // para hacer un arreglo de libros
       libroActual: null, // refiere al libro actual
       currentIndex: -1, // valor para determinar su visualizacion
-      titulo: ""
+      titulo: "",
+      adm: false,
+      desc1: "",
+      desc2: "",
+      desc3: "",
+      userActual: null
     };
   },
   methods: {
@@ -72,10 +85,16 @@ export default {
       this.buscaLibros();
       this.libroActual = null;
       this.currentIndex = -1;
+      this.desc1="";
+      this.desc2="";
+      this.desc3="";
     },
     activaLibro(libro, index) { // muestra la descripcion y opcion de editar de un libro al haber hecho click en el
       this.libroActual = libro;
       this.currentIndex = libro ? index : -1;
+      if(this.libroActual.usuario){
+        this.dataUser();
+      }
     },
     borraTodosLibros() {  // borra todos los libros de la base de datos (tenga cuidado, no es reversible)
       ServicioLibros.deleteAll() //utiliza una de las funciones exportadas
@@ -97,6 +116,19 @@ export default {
         .catch(e => {
           console.log(e);
         });
+    },
+    dataUser(){
+      ServicioUsers.get(this.libroActual.usuario)
+        .then(response=> {
+          this.userActual = response.data;
+          this.desc1=this.userActual.nombre;
+          this.desc2=this.userActual.rut;
+          this.desc3=this.userActual.correo;
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
     }
   },
   mounted() { // utilizacion inicial del metodo para tener la lista inicial
@@ -104,7 +136,6 @@ export default {
   }
 };
 </script>
-
 <style>
 #total {
   display: flex;
@@ -151,5 +182,8 @@ export default {
   min-height: 150px;
   padding: 20px;
   background-color: rgb(72, 72, 84);
+}
+.usdesc{
+    margin: -10px 30px 5px 10px;
 }
 </style>
