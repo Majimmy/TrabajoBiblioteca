@@ -33,7 +33,8 @@ export default {
                 id: null,
                 titulo: "",
                 descripcion: "",
-                disponible: false
+                disponible: true,
+                usuario: null
             },
             enviado: false // booleano para determinar cuando ese mensaje se muestre.
         };
@@ -42,7 +43,9 @@ export default {
         guardaLibro() { // funcion de pagina que realiza pasos para guardar libro
             var data = {  //crea un grupo de datos que sea compatible con las funciones de LibrosServD.js
                 titulo: this.libro.titulo,
-                descripcion: this.libro.descripcion
+                descripcion: this.libro.descripcion,
+                disponible: this.libro.disponible,
+                usuario: this.libro.usuario
             };
             ServicioLibros.create(data) //utiliza una de las funciones exportadas
             .then(response => {
@@ -57,7 +60,13 @@ export default {
         },
         nuevoLibro() { //resetea el libro actual (de la pagina) para crear otro
             this.enviado = false;
-            this.libro = {};
+            this.libro = {
+                id: null,
+                titulo: "",
+                descripcion: "",
+                disponible: true,
+                usuario: null
+            };
         }
     }
 };
