@@ -25,7 +25,7 @@
 - ver la base de datos "test"
 
 ## montar frontend
-- abrir terminal en la carpeta dondese quiera tener el frontend, y escribir:<br>
+- abrir terminal en la carpeta donde se quiera tener el frontend, y escribir:<br>
   vue create frontend (esto crea la carpeta frontend)
 - durante la instalacion, elegir la opcion: "Default ([Vue 3] babel, eslint)"
 - despues, instalar los siguientes elementos:<br>
