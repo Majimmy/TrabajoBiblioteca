@@ -23,3 +23,13 @@
 - utilizar la ruta de la base de datos default:<br>
   (mongodb://localhost:27017)
 - ver la base de datos "test"
+
+## montar frontend
+- abrir terminal en la carpeta dondese quiera tener el frontend, y escribir:<br>
+  vue create frontend (esto crea la carpeta frontend)
+- durante la instalacion, elegir la opcion: "Default ([Vue 3] babel, eslint)"
+- despues, instalar los siguientes elementos:<br>
+  npm install bootstrap@4.6.0 jquery popper.js<br>
+  npm install vue-router@4<br>
+  npm install axios
+- encender servidor frontend con el comando: npm run serve
