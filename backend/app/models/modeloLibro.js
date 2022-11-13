@@ -3,7 +3,8 @@ module.exports = mongoose => {
     {
       titulo: String,
       descripcion: String,   //atributos que se van a trabajar (aparte de la _id)
-      disponible: Boolean
+      disponible: Boolean,
+      usuario: { type: mongoose.Schema.Types.ObjectId, ref: 'users' }
     },
     { timestamps: true }
   );
