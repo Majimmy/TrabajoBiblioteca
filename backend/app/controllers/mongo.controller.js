@@ -12,7 +12,8 @@ exports.crea = (req, res) => {
   const libro = new Libro({
     titulo: req.body.titulo,
     descripcion: req.body.descripcion,
-    disponible: req.body.disponible ? req.body.disponible : false
+    disponible: req.body.disponible ? req.body.disponible : false,
+    usuario: req.body.usuario
   })
             // guarda Libro
   libro
@@ -160,7 +161,6 @@ exports.creaU = (req, res) => {
     });
   });
 };
-
 // muestra todos los usuarios por nombre entregado
 exports.buscaU = (req, res) => {
   const nombre = req.query.nombre;
@@ -196,5 +196,19 @@ exports.borraIdU = (req, res) => {
       res.status(500).send({
         message: "Error al tratar de borrar usuario con id = " + id
       });
+    });
+};
+exports.buscaIdU = (req, res) => {
+  const id = req.params.id;
+  User.findById(id)
+    .then(data => {
+      if (!data)
+        res.status(404).send({ message: "No se encuentra user con id: "+id });
+      else res.send(data);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .send({ message: "Error buscando user con la id=" + id });
     });
 };
