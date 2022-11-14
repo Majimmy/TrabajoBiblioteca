@@ -63,8 +63,8 @@ export default {
       libroActual: null, // refiere al libro actual
       currentIndex: -1, // valor para determinar su visualizacion
       titulo: "",
-      adm: false,
-      desc1: "",
+      adm: false, // importante: este valor se puede cambiar por si se quisiece tener un botón que borre todos los libros, pero se recomienda tener 
+      desc1: "",  // todos los libros en estado disponible primero, o tendrá usuarios con libros que no podrá devolver. El valor por default es "false".
       desc2: "",
       desc3: "",
       userActual: null
