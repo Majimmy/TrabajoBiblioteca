@@ -33,3 +33,11 @@
   npm install vue-router@4<br>
   npm install axios
 - encender servidor frontend con el comando: npm run serve
+
+## importar datos pre definidos
+- encender la base de datos en docker
+- visualizar los datos con mongo compass
+- abrir el modelo de dato o carpeta "libros"
+- utilizar la opción "add data" mendiante importar un archivo
+- utilizar el archivo "librospredata.js" que se encuentra en la carpeta "cargaDatos", dentro de backend<br>
+   Esto ingresará 10 libros listos y disponibles para trabajar.
